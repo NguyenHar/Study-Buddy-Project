@@ -22,3 +22,13 @@ CREATE TABLE Favorited (
 SELECT * FROM Prompt;
 SELECT * FROM [User];
 SELECT * FROM Favorited;
+
+INSERT INTO PROMPT(Question,Answer)
+VALUES('What is OOP?','Object Oriented Programming'),
+('What is Angular?','A javascript framework');
+
+INSERT INTO [User]([Name])
+VALUES('Harry'),('Yiding'),('Mikael');
+
+INSERT INTO Favorited([User_Id],Prompt_Id)
+VALUES(1,2),(3,1),(2,1),(2,2);

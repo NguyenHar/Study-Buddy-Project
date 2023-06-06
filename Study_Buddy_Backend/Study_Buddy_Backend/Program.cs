@@ -1,3 +1,5 @@
+using Study_Buddy_Backend.Models;
+
 namespace Study_Buddy_Backend
 {
     public class Program
@@ -5,6 +7,7 @@ namespace Study_Buddy_Backend
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<StudyBuddyContext>();
 
             // Add services to the container.
 
