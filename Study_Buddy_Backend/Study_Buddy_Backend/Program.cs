@@ -13,7 +13,22 @@ namespace Study_Buddy_Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Fix CORS Error
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularOrigins",
+                builder =>
+                {
+                    builder.WithOrigins(
+                                        "http://localhost:4200"
+                                        )
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
+            app.UseCors("AllowAngularOrigins");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
