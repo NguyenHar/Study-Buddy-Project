@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study_Buddy_Backend", "Study_Buddy_Backend\Study_Buddy_Backend.csproj", "{4ADC6623-282B-4C7B-803A-B045D47493FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ADC6623-282B-4C7B-803A-B045D47493FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ADC6623-282B-4C7B-803A-B045D47493FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ADC6623-282B-4C7B-803A-B045D47493FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADC6623-282B-4C7B-803A-B045D47493FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA0FB466-7665-4F5D-A965-5273002D7811}
+	EndGlobalSection
+EndGlobal
