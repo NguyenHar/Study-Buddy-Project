@@ -1,7 +1,7 @@
 <div class="topnav">
     <a class="active" routerLink="">Login Page</a>
 
-    <div *ngIf="isLoggedIn">
+    <div *ngIf="checkLogin()">
         <a routerLink="prompts">Flash Cards</a>
         <a routerLink="favorites">Favorites</a>
     </div>

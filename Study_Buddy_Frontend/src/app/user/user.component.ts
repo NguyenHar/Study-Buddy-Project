@@ -11,7 +11,6 @@ export class UserComponent {
   newUser:User = {} as User;
   users:User[] = [];
   selectedUser:User = {} as User;
-  showLogin:boolean = true;
   
   constructor(private userService:UserService) {
     this.userService.getAllUsers().subscribe(
@@ -32,13 +31,24 @@ export class UserComponent {
     );
   }
 
-  selectUser() : void {
-    this.userService.currentUser = this.selectedUser;
-    this.userService.isLoggedIn = true;
+  // selectUser() : void {
+  //   this.userService.currentUser = this.selectedUser;
+  //   this.userService.isLoggedIn = true;
+  // }
+
+  checkLoginStatus() : boolean {
+    return this.userService.showLogin;
   }
 
   // Hide the login menu
-  hideLogin() : void {
-    this.showLogin = !this.showLogin;
+  logIn() : void {
+    this.userService.currentUser = this.selectedUser;
+    this.userService.isLoggedIn = true;
+    this.userService.showLogin = !this.userService.showLogin;
+  }
+
+  logOut() : void {
+    this.userService.showLogin = !this.userService.showLogin;
+    this.userService.isLoggedIn = false;
   }
 }

@@ -1,11 +1,11 @@
-<div *ngIf="showLogin">
+<div *ngIf="checkLoginStatus()">
     <h2>Select a login</h2>
     <div *ngFor="let u of users">
         <input type="radio" id="users_{{u.name}}" [value]="u" name="users" [(ngModel)]="selectedUser">
         <label for="users_{{u.name}}">{{u.name}}
         </label>
     </div>
-    <button (click)="hideLogin(); selectUser()">Submit</button>
+    <button (click)="logIn()">Submit</button>
     
     <p>Add new person</p>
     <p>Name: <input type="text" name="name" [(ngModel)]="newUser.name"/></p>
@@ -13,9 +13,9 @@
 </div>
 
 
-<div *ngIf="!showLogin">
+<div *ngIf="!checkLoginStatus()">
     <h1>
         Welcome, {{selectedUser.name}}!
-        <button (click)="hideLogin()">Log out</button>
+        <button (click)="logOut()">Log out</button>
     </h1>
 </div>

@@ -9,7 +9,8 @@ import { User } from './user';
 export class UserService {
   url:string = "https://localhost:7188/api/Users";
   currentUser:User = {} as User;
-  isLoggedIn:boolean = false;
+  showLogin:boolean = true; // Display form
+  isLoggedIn:boolean = false; // Display header menu
   constructor(private http:HttpClient) { }
 
   getAllUsers():Observable<User[]> {
