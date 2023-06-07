@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -8,13 +8,37 @@ import { UserService } from '../user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  newUser:User = {} as User;
   users:User[] = [];
+  selectedUser:User = {} as User;
+  showLogin:boolean = true;
+  @Output() changed = new EventEmitter<User>();
   
   constructor(private userService:UserService) {
     this.userService.getAllUsers().subscribe(
       (result) => {
         this.users = result;
+        this.selectedUser = this.users[0]; // Default to top of the list in login page
       }
     );
+  }
+
+  // Form to add new person to login menu
+  addUser() : void {
+    this.userService.addUser(this.newUser).subscribe(
+      () => {
+        this.users.push(this.newUser);
+        this.newUser = {} as User;
+      }
+    );
+  }
+
+  selectUser() : void {
+    this.changed.emit(this.selectedUser);
+  }
+
+  // Hide the login menu
+  hideLogin() : void {
+    this.showLogin = !this.showLogin;
   }
 }
