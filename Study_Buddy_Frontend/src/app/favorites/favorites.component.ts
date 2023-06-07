@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../user';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-favorites',
@@ -7,7 +9,12 @@ import { User } from '../user';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent {
-  @Input() user:User = {} as User;
-  
+  loggedInUser:User = {} as User;
+  constructor(private userService:UserService) {
 
+  }
+
+  ngOnInit() : void {
+    this.loggedInUser = this.userService.currentUser;
+  }
 }

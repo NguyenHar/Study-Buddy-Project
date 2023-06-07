@@ -32,6 +32,10 @@ export class UserComponent {
     );
   }
 
+  selectUser() : void {
+    this.userService.currentUser = this.selectedUser;
+    this.userService.isLoggedIn = true;
+  }
 
   // Hide the login menu
   hideLogin() : void {

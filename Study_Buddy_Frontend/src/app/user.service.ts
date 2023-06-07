@@ -8,6 +8,8 @@ import { User } from './user';
 })
 export class UserService {
   url:string = "https://localhost:7188/api/Users";
+  currentUser:User = {} as User;
+  isLoggedIn:boolean = false;
   constructor(private http:HttpClient) { }
 
   getAllUsers():Observable<User[]> {
@@ -25,4 +27,5 @@ export class UserService {
   deleteUser(id:number):Observable<any> {
     return this.http.delete<any>(this.url + "/" + id);
   }
+
 }

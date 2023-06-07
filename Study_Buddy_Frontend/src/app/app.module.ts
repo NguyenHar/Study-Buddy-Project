@@ -10,7 +10,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { PromptsComponent } from './prompts/prompts.component';
 
 const routes : Route[] = [
-  { path:'', component:UserComponent },
+  { path:'', component:UserComponent, pathMatch: 'full' },
   { path:'favorites', component:FavoritesComponent },
   { path:'prompts', component:PromptsComponent }
 ];

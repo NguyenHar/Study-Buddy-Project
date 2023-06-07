@@ -9,5 +9,11 @@ import { User } from './user';
 })
 export class AppComponent {
   title = 'Study_Buddy_Frontend';
+  isLoggedIn:boolean = false;
+  constructor(private userService:UserService) {
 
+  }
+  ngOnInit() : void {
+    this.isLoggedIn = this.userService.isLoggedIn;
+  }
 }
