@@ -8,4 +8,6 @@ import { User } from '../user';
 })
 export class FavoritesComponent {
   @Input() user:User = {} as User;
+  
+
 }

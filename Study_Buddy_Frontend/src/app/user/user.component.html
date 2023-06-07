@@ -5,9 +5,8 @@
         <label for="users_{{u.name}}">{{u.name}}
         </label>
     </div>
-    <button (click)="hideLogin(); selectUser()">Submit</button>
-    <app-favorites [user]="selectedUser" *ngIf="false"></app-favorites>
-
+    <button (click)="hideLogin()">Submit</button>
+    
     <p>Add new person</p>
     <p>Name: <input type="text" name="name" [(ngModel)]="newUser.name"/></p>
     <button (click)="addUser()">Add user</button>
@@ -20,3 +19,5 @@
         <button (click)="hideLogin()">Log out</button>
     </h1>
 </div>
+
+<app-favorites (user)="selectedUser" *ngIf="false"></app-favorites>

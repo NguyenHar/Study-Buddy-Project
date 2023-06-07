@@ -12,7 +12,6 @@ export class UserComponent {
   users:User[] = [];
   selectedUser:User = {} as User;
   showLogin:boolean = true;
-  @Output() changed = new EventEmitter<User>();
   
   constructor(private userService:UserService) {
     this.userService.getAllUsers().subscribe(
@@ -33,9 +32,6 @@ export class UserComponent {
     );
   }
 
-  selectUser() : void {
-    this.changed.emit(this.selectedUser);
-  }
 
   // Hide the login menu
   hideLogin() : void {
