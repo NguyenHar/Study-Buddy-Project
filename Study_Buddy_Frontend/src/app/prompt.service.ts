@@ -28,5 +28,8 @@ export class PromptService {
   return this.http.get<Prompt>(this.url+"/"+id)
  }
 
+ updatePrompt(newValue:Prompt, id:number):Observable<any> {
+  return this.http.put<any>(this.url+"/"+id, newValue);
+ }
 
 }
