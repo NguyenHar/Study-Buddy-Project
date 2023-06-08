@@ -8,11 +8,16 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { PromptsComponent } from './prompts/prompts.component';
+import { PromptListComponent } from './prompt-list/prompt-list.component';
+import { AddPromptComponent } from './add-prompt/add-prompt.component';
+
 
 const routes : Route[] = [
   { path:'', component:UserComponent, pathMatch: 'full' },
   { path:'favorites', component:FavoritesComponent },
-  { path:'prompts', component:PromptsComponent }
+  { path:'prompts', component:PromptsComponent },
+  {path:'questionlist',component:PromptListComponent},
+ 
 ];
 
 @NgModule({
@@ -20,7 +25,10 @@ const routes : Route[] = [
     AppComponent,
     UserComponent,
     FavoritesComponent,
-    PromptsComponent
+    PromptsComponent,
+    PromptListComponent,
+    AddPromptComponent
+
   ],
   imports: [
     BrowserModule,
