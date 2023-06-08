@@ -13,8 +13,11 @@ export class FavoritesComponent {
   constructor(private userService:UserService) {
 
   }
+  
 
   ngOnInit() : void {
     this.loggedInUser = this.userService.currentUser;
   }
+
 }
+
