@@ -9,6 +9,7 @@ export interface Prompt {
     question:   string;
     answer:     string;
     favoriteds: any[];
+    show?:boolean;
 }
 
 // Converts JSON strings to/from your types
