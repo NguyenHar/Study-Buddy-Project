@@ -25,18 +25,11 @@ SELECT * FROM Favorited;
 
 INSERT INTO PROMPT(Question,Answer)
 VALUES('What is OOP?','Object Oriented Programming'),
-('What is Angular?','A javascript framework');
+('What is Angular?','A javascript framework'),
+('What is Encapsulation?','Encapsulation is the packing of data and functions into a single component.');
 GO
 INSERT INTO [User]([Name])
 VALUES('Harry'),('Yiding'),('Mikael');
 GO
 INSERT INTO Favorited([User_Id],Prompt_Id)
 VALUES(1,24),(1,25),(1,31),(2,27),(2,24);
-
-GO
-DBCC CHECKIDENT ('Prompt', RESEED, 0)
-GO
-DBCC CHECKIDENT ('[User]', RESEED, 0)
-GO
-DBCC CHECKIDENT ('Favorited', RESEED, 0)
-GO

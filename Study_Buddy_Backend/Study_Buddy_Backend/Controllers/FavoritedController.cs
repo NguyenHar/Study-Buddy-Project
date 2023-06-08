@@ -31,6 +31,17 @@ namespace Study_Buddy_Backend.Controllers
             return await _context.Favoriteds.ToListAsync();
         }
 
+        [HttpGet("user/{userId}")]
+        // Check if a prompt is already favorited for the person
+        public async Task<ActionResult<IEnumerable<int>>> GetUserFavorites(int userId)
+        {
+            if (_context.Prompts == null)
+            {
+                return NotFound();
+            }
+            return _context.Favoriteds.Where(x => x.UserId == userId).Select(x => x.PromptId).ToList();
+        }
+
         // GET: api/Favorited/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Favorited>> GetFavorited(int id)

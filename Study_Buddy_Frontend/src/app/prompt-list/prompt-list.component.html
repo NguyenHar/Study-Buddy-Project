@@ -25,7 +25,7 @@
           </div>
         </div>
         <p>{{p.id}}</p>
-      <!-- <button *ngIf="checkFavorite(p.id)">Add to favorite</button> -->
+      <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button><br/>
       <button (click)="deletePrompt(p.id,i)">Delete Question</button><br/>
       <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
   </div>

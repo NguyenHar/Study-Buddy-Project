@@ -31,6 +31,7 @@ namespace Study_Buddy_Backend.Controllers
             return await _context.Prompts.ToListAsync();
         }
 
+
         // GET: api/Prompts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Prompt>> GetPrompt(int id)

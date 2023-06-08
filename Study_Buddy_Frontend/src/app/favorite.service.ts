@@ -18,12 +18,17 @@ export class FavoriteService {
     return this.http.delete<any>(this.url+"/"+id);
   }
 
-  addFavorites(newFvorites:Favorites):Observable<any>{
-  return this.http.post<any>(this.url,newFvorites);
+  addFavorites(newFavorites:Favorites):Observable<any>{
+  return this.http.post<any>(this.url,newFavorites);
   }
-
 
   getFavoritesById(id:number):Observable<Favorites>{
   return this.http.get<Favorites>(this.url+"/"+id);
   }
+
+  getUserFavorites(userId:number):Observable<any>{
+    return this.http.get<Favorites>(this.url+"/user/"+userId);
+  }
+
+
 }

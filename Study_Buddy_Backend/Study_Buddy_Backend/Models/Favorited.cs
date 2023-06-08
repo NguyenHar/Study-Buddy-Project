@@ -7,9 +7,9 @@ public partial class Favorited
 {
     public int Id { get; set; }
 
-    public int? UserId { get; set; }
+    public int UserId { get; set; }
 
-    public int? PromptId { get; set; }
+    public int PromptId { get; set; }
 
     public virtual Prompt? Prompt { get; set; }
 

@@ -3,6 +3,7 @@ import { Prompt } from '../prompt';
 import { PromptService } from '../prompt.service';
 import { FavoriteService } from '../favorite.service';
 import { Favorites } from '../favorites';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-prompt-list',
@@ -14,18 +15,24 @@ export class PromptListComponent implements OnInit{
   promptList:Prompt[]=[];
   display:boolean=true;
   prompt:Prompt={} as Prompt;
+  userFavorites:number[] = [];
   
 
-  constructor(private promptApi:PromptService,private favoriteApi:FavoriteService){
+  constructor(private promptApi:PromptService, 
+    private favoriteApi:FavoriteService,
+    private userApi:UserService){
    
   }
   ngOnInit(): void {
     this.promptApi.getAllPrompts().subscribe(
-      (result)=>{this.promptList=result}
+      (result)=>{this.promptList=result;}
      );
+    
+    
+    this.favoriteApi.getUserFavorites(this.userApi.currentUser.id).subscribe(
+      (result)=>{this.userFavorites=result;}
+    );
   }
-
-
 
   toggleDisplay(){
     this.display=!this.display;
@@ -51,19 +58,21 @@ export class PromptListComponent implements OnInit{
    }
   }
 
-  // checkFavorite(id:number) : boolean {
-  //   this.favoriteApi.getAllFavorites().subscribe(
-  //     (result) => {
-  //       for (let i=0; i<result.length; i++) {
-  //         if (result[i].promptId == id) {
-  //           return true;
-  //         }
-  //       }
-  //       return false;
-  //     }
-  //     );
-  //   return false;
-  // }
+  addFavorite(promptId:number) : void {
+    let fav : Favorites = { id:0, userId:this.userApi.currentUser.id, promptId:promptId, prompt:null,user:null };
+    this.favoriteApi.addFavorites(fav).subscribe(
+      () => {}
+    );
+  }
+
+  checkFavorite(promptId:number) : boolean {
+    for (let i=0; i<this.userFavorites.length; i++)
+    {
+      if (this.userFavorites[i] == promptId)
+        return true;
+    }
+    return false;
+  }
 
 
   // If there are foreign key references, you must delete those first
