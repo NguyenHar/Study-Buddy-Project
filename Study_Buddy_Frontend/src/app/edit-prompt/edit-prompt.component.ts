@@ -9,12 +9,16 @@ import { Prompt } from '../prompt';
 export class EditPromptComponent {
   editing:boolean=false;
 
-@Input() editPrompt:Prompt={} as Prompt;
+  @Input() editPrompt:Prompt={} as Prompt;
 
-@Output() changed =new EventEmitter<Prompt>();
+  @Output() changed = new EventEmitter<Prompt>();
 
-finishEditing():void{
-  this.editing=false;
-  this.changed.emit(this.editPrompt);
-}
+  finishEditing():void{
+    this.changed.emit(this.editPrompt);
+    this.toggleDisplay();
+  }
+  
+  toggleDisplay() : void {
+    this.editing=!this.editing;
+  }
 }

@@ -58,12 +58,20 @@ export class PromptListComponent implements OnInit{
   deletePrompt(id:number,index:number){
     this.promptApi.deletePrompt(id).subscribe(
       (result)=>{
-        this.promptList.splice(index,1)
+        this.promptList.splice(index,1);
       }
     )
   }
 
+  updatePrompt(prompt:Prompt, index:number) : void {
+    this.promptApi.updatePrompt(prompt, prompt.id).subscribe(
+      (result) => {
+        this.promptList[index] = prompt;
+      }
+    );
   }
+
+}
 
 
 
