@@ -2,12 +2,13 @@
 
 
 <button (click)="showAnswer(i)"><h3><span>Question {{i+1}}: </span>{{p.question}}</h3></button>
+<button (click)="deletePrompt(p.id,i)">X</button>
 
 <p *ngIf="p.show">Answer:{{p.answer}}</p>
 
 
 </div>
-<br>
+
 <button *ngIf="display" (click)="toggleDisplay()">Add Prompt</button>
 <app-add-prompt *ngIf="!display" (changed)="addPrompt($event)"></app-add-prompt>
 <router-outlet></router-outlet>

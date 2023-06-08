@@ -9,20 +9,24 @@ import { Favorites } from '../favorites';
   templateUrl: './prompt-list.component.html',
   styleUrls: ['./prompt-list.component.css']
 })
-export class PromptListComponent {
+export class PromptListComponent implements OnInit{
 
   promptList:Prompt[]=[];
   favoriteList:Favorites[]=[];
   display:boolean=true;
+  prompt:Prompt={} as Prompt;
   
 
   constructor(private promptApi:PromptService,private favoriteApi:FavoriteService){
-   this.promptApi.getAllPrompts().subscribe(
-    (result)=>{this.promptList=result}
-   );
-   this.favoriteApi.getAllFavorites().subscribe(
-    (result)=>{this.favoriteList=result}
-   );
+   
+  }
+  ngOnInit(): void {
+    this.promptApi.getAllPrompts().subscribe(
+      (result)=>{this.promptList=result}
+     );
+     this.favoriteApi.getAllFavorites().subscribe(
+      (result)=>{this.favoriteList=result}
+     );
   }
 
 
@@ -51,8 +55,12 @@ export class PromptListComponent {
    }
   }
 
-  addToFavorites(){
-    
+  deletePrompt(id:number,index:number){
+    this.promptApi.deletePrompt(id).subscribe(
+      (result)=>{
+        this.promptList.splice(index,1)
+      }
+    )
   }
 
   }

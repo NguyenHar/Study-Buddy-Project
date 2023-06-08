@@ -10,6 +10,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { PromptsComponent } from './prompts/prompts.component';
 import { PromptListComponent } from './prompt-list/prompt-list.component';
 import { AddPromptComponent } from './add-prompt/add-prompt.component';
+import { EditPromptComponent } from './edit-prompt/edit-prompt.component';
 
 
 const routes : Route[] = [
@@ -27,7 +28,8 @@ const routes : Route[] = [
     FavoritesComponent,
     PromptsComponent,
     PromptListComponent,
-    AddPromptComponent
+    AddPromptComponent,
+    EditPromptComponent
 
   ],
   imports: [
