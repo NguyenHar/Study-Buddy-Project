@@ -14,22 +14,22 @@ export class PromptService {
   getAllPrompts():Observable<Prompt[]>{
     return this.http.get<Prompt[]>(this.url);
   }
-  
+
   deletePrompt(id:number):Observable<any>{
-    return this.http.delete<any>(this.url+"/"+id)
+    return this.http.delete<any>(this.url+"/"+id);
   }
 
- addPrompt(newPrompt:Prompt):Observable<any>{
-  return this.http.post<any>(this.url,newPrompt)
- }
+  addPrompt(newPrompt:Prompt):Observable<any>{
+    return this.http.post<any>(this.url,newPrompt);
+  }
 
 
- getPromptById(id:number):Observable<Prompt>{
-  return this.http.get<Prompt>(this.url+"/"+id)
- }
+  getPromptById(id:number):Observable<Prompt>{
+    return this.http.get<Prompt>(this.url+"/"+id);
+  }
 
- updatePrompt(newValue:Prompt, id:number):Observable<any> {
+  updatePrompt(newValue:Prompt, id:number):Observable<any> {
   return this.http.put<any>(this.url+"/"+id, newValue);
- }
+  }
 
 }

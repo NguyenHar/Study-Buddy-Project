@@ -7,23 +7,23 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FavoriteService {
-url:string="https://localhost:7188/api/Favorited"
-constructor(private http:HttpClient) { }
+  url:string="https://localhost:7188/api/Favorited"
+  constructor(private http:HttpClient) { }
 
-getAllFavorites():Observable<Favorites[]>{
-  return this.http.get<Favorites[]>(this.url);
-}
+  getAllFavorites():Observable<Favorites[]>{
+    return this.http.get<Favorites[]>(this.url);
+  }
 
-deleteFavorites(id:number):Observable<any>{
-  return this.http.delete<any>(this.url+"/"+id)
-}
+  deleteFavorites(id:number):Observable<any>{
+    return this.http.delete<any>(this.url+"/"+id);
+  }
 
-addFavorites(newFvorites:Favorites):Observable<any>{
-return this.http.post<any>(this.url,newFvorites)
-}
+  addFavorites(newFvorites:Favorites):Observable<any>{
+  return this.http.post<any>(this.url,newFvorites);
+  }
 
 
-getFavoritesById(id:number):Observable<Favorites>{
-return this.http.get<Favorites>(this.url+"/"+id)
-}
+  getFavoritesById(id:number):Observable<Favorites>{
+  return this.http.get<Favorites>(this.url+"/"+id);
+  }
 }

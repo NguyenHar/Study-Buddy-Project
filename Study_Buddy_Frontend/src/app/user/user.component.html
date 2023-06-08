@@ -15,7 +15,7 @@
 
 <div *ngIf="!checkLoginStatus()">
     <h1>
-        Welcome, {{selectedUser.name}}!
+        Welcome, {{getUser().name}}!
         <button (click)="logOut()">Log out</button>
     </h1>
 </div>
