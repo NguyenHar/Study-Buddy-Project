@@ -1,9 +1,20 @@
 
-<div>
-<p>Question:</p>
-<input type="text" [(ngModel)]="newPrompt.question">
-<p>Answer:</p>
-<input type="text" [(ngModel)]="newPrompt.answer">
+<div class="center">
+    <div class="flip-card">
+        <div class="flip-card-front">
+
+            <h3>Question:</h3>
+            <br>
+            <input type="text" [(ngModel)]="newPrompt.question" size="37">
+            <br>
+            <br>
+            <h5>Answer:</h5>
+            <input type="text" [(ngModel)]="newPrompt.answer" size="37">
+        </div>
+    </div>
 </div>
 
-<button (click)="sendPrompt()">Add Prompt</button>
+
+
+
+<button class="button" (click)="sendPrompt()">Add Prompt</button>

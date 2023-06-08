@@ -1,5 +1,8 @@
+
+<div>
 <button class="button" *ngIf="display" (click)="toggleDisplay()">Add Prompt</button>
 <app-add-prompt *ngIf="!display" (changed)="addPrompt($event)"></app-add-prompt>
+
 <div *ngFor="let p of promptList; index as i">
     
     
@@ -28,9 +31,5 @@
 </div>
 <br>
 
-
-
-<button *ngIf="display" (click)="toggleDisplay()">Add Prompt</button>
-<app-add-prompt *ngIf="!display" (changed)="addPrompt($event)"></app-add-prompt>
 
 <router-outlet></router-outlet>
