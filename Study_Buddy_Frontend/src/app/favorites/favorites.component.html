@@ -1,2 +1,8 @@
 <p>favorites works!</p>
-<p>{{loggedInUser.name}}</p>
+<p>Logged in as: {{currentUser.name}}</p>
+
+
+<button (click)="getUserFavorites()">Get favorites</button>
+<div *ngFor="let f of userFavorites">
+    <p>{{f.question}}        {{f.answer}}</p>
+</div>
