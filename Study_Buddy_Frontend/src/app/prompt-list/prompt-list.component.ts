@@ -16,13 +16,11 @@ export class PromptListComponent implements OnInit{
   display:boolean=true;
   prompt:Prompt={} as Prompt;
   userFavorites:number[] = [];
-  
 
   constructor(private promptApi:PromptService, 
     private favoriteApi:FavoriteService,
-    private userApi:UserService){
-   
-  }
+    private userApi:UserService){}
+
   ngOnInit(): void {
     this.promptApi.getAllPrompts().subscribe(
       (result)=>{this.promptList=result;}
@@ -38,6 +36,7 @@ export class PromptListComponent implements OnInit{
     this.display=!this.display;
   }
 
+  // Add a new prompt to the database and list
   addPrompt(newPrompt:Prompt){
   this.promptApi.addPrompt(newPrompt).subscribe(
     ()=>{
@@ -47,6 +46,7 @@ export class PromptListComponent implements OnInit{
   this.display=true;
   }
 
+  // Not used?
   showAnswer(index:number){
    for(let i=0;i<this.promptList.length;i++){
     if(i==index){
@@ -58,6 +58,7 @@ export class PromptListComponent implements OnInit{
    }
   }
 
+  // Adding prompt by id to list of favorites
   addFavorite(promptId:number) : void {
     let fav : Favorites = { id:0, userId:this.userApi.currentUser.id, promptId:promptId, prompt:null,user:null };
     this.favoriteApi.addFavorites(fav).subscribe(
@@ -65,6 +66,7 @@ export class PromptListComponent implements OnInit{
     );
   }
 
+  // Used to display "add to favorite" button on card if not favorited
   checkFavorite(promptId:number) : boolean {
     for (let i=0; i<this.userFavorites.length; i++)
     {
@@ -75,7 +77,7 @@ export class PromptListComponent implements OnInit{
   }
 
 
-  // If there are foreign key references, you must delete those first
+  // Removing prompt from database and list
   deletePrompt(id:number, index:number) : void{
     this.promptApi.deletePrompt(id).subscribe(
       ()=>{
@@ -84,6 +86,7 @@ export class PromptListComponent implements OnInit{
     );
   }
 
+  // Updating prompt in database and list
   updatePrompt(prompt:Prompt, index:number) : void {
     this.promptApi.updatePrompt(prompt, prompt.id).subscribe(
       (result) => {

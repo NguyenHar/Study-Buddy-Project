@@ -31,6 +31,29 @@ namespace Study_Buddy_Backend.Controllers
             return await _context.Favoriteds.ToListAsync();
         }
 
+
+        [HttpGet("prompt/{userId}")]
+        // Return the list of prompts that is favorited by the person
+        public async Task<ActionResult<IEnumerable<Prompt>>> GetFavoritedPrompts(int userId)
+        {
+            if (_context.Prompts == null)
+            {
+                return NotFound();
+            }
+            List<int> promptsToReturn = _context.Favoriteds.Where(x => x.UserId == userId).Select(x => x.PromptId).ToList();
+            List<Prompt> promptsList = new List<Prompt>();
+            foreach (Prompt p in _context.Prompts)
+            {
+                foreach(int i in promptsToReturn)
+                {
+                    if (i == p.Id)
+                        promptsList.Add(p);
+                }
+            }
+
+            return promptsList;
+        }
+
         [HttpGet("user/{userId}")]
         // Check if a prompt is already favorited for the person
         public async Task<ActionResult<IEnumerable<int>>> GetUserFavorites(int userId)
@@ -126,9 +149,30 @@ namespace Study_Buddy_Backend.Controllers
             return NoContent();
         }
 
+        // Delete Favorite by prompt id
+        [HttpDelete("prompt/{id}")]
+        public async Task<IActionResult> DeleteFavoritedPrompt(int id)
+        {
+            if (_context.Favoriteds == null)
+            {
+                return NotFound();
+            }
+            int favoriteId = _context.Favoriteds.Where(x => x.PromptId == id).FirstOrDefault().Id;
+
+            var favorited = await _context.Favoriteds.FindAsync(favoriteId);
+            if (favorited == null)
+            {
+                return NotFound();
+            }
+            _context.Favoriteds.Remove(favorited);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
         private bool FavoritedExists(int id)
         {
             return (_context.Favoriteds?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
     }
 }

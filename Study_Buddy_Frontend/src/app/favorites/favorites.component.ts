@@ -13,7 +13,7 @@ import { PromptService } from '../prompt.service';
 })
 export class FavoritesComponent implements OnInit{
   userFavorites:Prompt[] = []; // List of prompts that belongs to the logged in user
-  allFavorites:Favorites[] = []; // Favorites list, containing the two foreign keys
+  // allFavorites:Favorites[] = []; // Favorites list, containing the two foreign keys
   currentUser:User = {} as User;
   display:boolean=true;
   constructor(private userService:UserService, private favService:FavoriteService, private promptService:PromptService) {
@@ -22,25 +22,11 @@ export class FavoritesComponent implements OnInit{
 
   ngOnInit() : void {
     this.currentUser = this.userService.currentUser;
-    this.favService.getAllFavorites().subscribe(
+    this.favService.getFavoritedPromptsByUserId(this.userService.currentUser.id).subscribe(
       (result) => {
-        this.allFavorites = result;
-        this.getUserFavorites();
+        this.userFavorites = result;
       }
     );
-  }
-
-
-  getUserFavorites() : void {
-    for (let i=0; i<this.allFavorites.length; i++){
-      if (this.allFavorites[i].userId == this.currentUser.id){
-        this.promptService.getPromptById(this.allFavorites[i].promptId).subscribe(
-          (result) => {
-            this.userFavorites.push(result);
-          }
-        );
-      }
-    }
   }
 
   toggleDisplay(){
@@ -55,6 +41,14 @@ export class FavoritesComponent implements OnInit{
        this.userFavorites[i].show=false;
      }
     }
+   }
+
+   removeFavorite(promptId:number, index:number) {
+    this.favService.deleteFavoriteByPromptId(promptId).subscribe(
+      () => {
+        this.userFavorites.splice(index,1);
+      }
+    );
    }
 }
 
