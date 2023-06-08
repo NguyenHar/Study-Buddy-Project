@@ -18,6 +18,7 @@ export class FavoritesComponent implements OnInit{
   display:boolean=true;
   constructor(private userService:UserService, private favService:FavoriteService, private promptService:PromptService) {
   }
+  
 
   ngOnInit() : void {
     this.currentUser = this.userService.currentUser;
@@ -56,3 +57,4 @@ export class FavoritesComponent implements OnInit{
     }
    }
 }
+
