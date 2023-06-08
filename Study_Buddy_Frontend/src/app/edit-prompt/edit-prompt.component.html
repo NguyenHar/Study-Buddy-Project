@@ -1,0 +1,10 @@
+<div *ngIf="editing"  >
+
+<p>Question:</p>
+<input type="text" name="question" [(ngModel)]="editPrompt.question">
+<p>Answer</p>
+<input type="text" name="answer" [(ngModel)]="editPrompt.answer">
+<button (click)="finishEditing()">Finish Edit</button>
+
+</div>
+<button *ngIf="!editing"  (click)="editing=true"> Edit Prompt</button>

@@ -26,4 +26,11 @@
 
 </div>
 <br>
+
+
+</div>
+
+<button *ngIf="display" (click)="toggleDisplay()">Add Prompt</button>
+<app-add-prompt *ngIf="!display" (changed)="addPrompt($event)"></app-add-prompt>
+
 <router-outlet></router-outlet>
