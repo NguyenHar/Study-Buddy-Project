@@ -12,7 +12,6 @@ import { Favorites } from '../favorites';
 export class PromptListComponent implements OnInit{
 
   promptList:Prompt[]=[];
-  favoriteList:Favorites[]=[];
   display:boolean=true;
   prompt:Prompt={} as Prompt;
   
@@ -23,9 +22,6 @@ export class PromptListComponent implements OnInit{
   ngOnInit(): void {
     this.promptApi.getAllPrompts().subscribe(
       (result)=>{this.promptList=result}
-     );
-     this.favoriteApi.getAllFavorites().subscribe(
-      (result)=>{this.favoriteList=result}
      );
   }
 
@@ -55,12 +51,28 @@ export class PromptListComponent implements OnInit{
    }
   }
 
-  deletePrompt(id:number,index:number){
+  // checkFavorite(id:number) : boolean {
+  //   this.favoriteApi.getAllFavorites().subscribe(
+  //     (result) => {
+  //       for (let i=0; i<result.length; i++) {
+  //         if (result[i].promptId == id) {
+  //           return true;
+  //         }
+  //       }
+  //       return false;
+  //     }
+  //     );
+  //   return false;
+  // }
+
+
+  // If there are foreign key references, you must delete those first
+  deletePrompt(id:number, index:number) : void{
     this.promptApi.deletePrompt(id).subscribe(
-      (result)=>{
+      ()=>{
         this.promptList.splice(index,1);
       }
-    )
+    );
   }
 
   updatePrompt(prompt:Prompt, index:number) : void {
@@ -70,7 +82,6 @@ export class PromptListComponent implements OnInit{
       }
     );
   }
-
 }
 
 

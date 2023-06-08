@@ -4,7 +4,7 @@
 <app-add-prompt *ngIf="!display" (changed)="addPrompt($event)"></app-add-prompt>
 
 
-<div *ngFor="let p of promptList; index as i">
+<div *ngFor="let p of promptList; let i=index">
     <!-- <button (click)="showAnswer(i)"><h3><span>Question {{i+1}}: </span>{{p.question}}</h3></button>
 <p *ngIf="p.show">Answer:{{p.answer}}</p> -->
   <div class="center">
@@ -22,6 +22,8 @@
             </div>
           </div>
         </div>
+        <p>{{p.id}}</p>
+      <!-- <button *ngIf="checkFavorite(p.id)">Add to favorite</button> -->
       <button (click)="deletePrompt(p.id,i)">Delete Question</button><br/>
       <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
   </div>

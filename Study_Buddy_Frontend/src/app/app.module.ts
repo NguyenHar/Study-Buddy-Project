@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { PromptsComponent } from './prompts/prompts.component';
 import { PromptListComponent } from './prompt-list/prompt-list.component';
 import { AddPromptComponent } from './add-prompt/add-prompt.component';
 import { EditPromptComponent } from './edit-prompt/edit-prompt.component';
@@ -16,8 +15,7 @@ import { EditPromptComponent } from './edit-prompt/edit-prompt.component';
 const routes : Route[] = [
   { path:'', component:UserComponent, pathMatch: 'full' },
   { path:'favorites', component:FavoritesComponent },
-  { path:'prompts', component:PromptsComponent },
-  {path:'questionlist',component:PromptListComponent},
+  {path:'questionlist',component:PromptListComponent}
  
 ];
 
@@ -26,7 +24,6 @@ const routes : Route[] = [
     AppComponent,
     UserComponent,
     FavoritesComponent,
-    PromptsComponent,
     PromptListComponent,
     AddPromptComponent,
     EditPromptComponent

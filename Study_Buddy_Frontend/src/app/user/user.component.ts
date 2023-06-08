@@ -16,7 +16,6 @@ export class UserComponent {
     this.userService.getAllUsers().subscribe(
       (result) => {
         this.users = result;
-        this.selectedUser = this.users[0]; // Default to top of the list in login page
       }
     );
   }
@@ -35,6 +34,10 @@ export class UserComponent {
   //   this.userService.currentUser = this.selectedUser;
   //   this.userService.isLoggedIn = true;
   // }
+
+  getUser() : User {
+    return this.userService.currentUser;
+  }
 
   checkLoginStatus() : boolean {
     return this.userService.showLogin;

@@ -18,7 +18,7 @@ CREATE TABLE Favorited (
 	[User_Id] INT FOREIGN KEY REFERENCES [User](id),
 	Prompt_Id INT FOREIGN KEY REFERENCES Prompt(id)
 );
-
+GO
 SELECT * FROM Prompt;
 SELECT * FROM [User];
 SELECT * FROM Favorited;
@@ -26,9 +26,17 @@ SELECT * FROM Favorited;
 INSERT INTO PROMPT(Question,Answer)
 VALUES('What is OOP?','Object Oriented Programming'),
 ('What is Angular?','A javascript framework');
-
+GO
 INSERT INTO [User]([Name])
 VALUES('Harry'),('Yiding'),('Mikael');
-
+GO
 INSERT INTO Favorited([User_Id],Prompt_Id)
-VALUES(1,2),(3,1),(2,1),(2,2);
+VALUES(1,24),(1,25),(1,31),(2,27),(2,24);
+
+GO
+DBCC CHECKIDENT ('Prompt', RESEED, 0)
+GO
+DBCC CHECKIDENT ('[User]', RESEED, 0)
+GO
+DBCC CHECKIDENT ('Favorited', RESEED, 0)
+GO

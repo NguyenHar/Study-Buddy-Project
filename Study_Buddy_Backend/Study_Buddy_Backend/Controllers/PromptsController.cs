@@ -103,11 +103,15 @@ namespace Study_Buddy_Backend.Controllers
             {
                 return NotFound();
             }
-            var prompt = await _context.Prompts.FindAsync(id);
+            Prompt prompt = await _context.Prompts.FindAsync(id);
             if (prompt == null)
             {
                 return NotFound();
             }
+            // Identify foreign key references and delete those first
+            List<Favorited> matching = _context.Favoriteds.Where(f => f.PromptId == id).ToList();
+            _context.Favoriteds.RemoveRange(matching);
+            await _context.SaveChangesAsync();
 
             _context.Prompts.Remove(prompt);
             await _context.SaveChangesAsync();
