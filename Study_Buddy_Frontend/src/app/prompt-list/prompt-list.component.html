@@ -11,12 +11,12 @@
       <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
+              <span *ngIf="checkFavorite(p.id)" style="font-size:200%;color:rgb(248, 223, 0);">&starf;</span>
               <br>
               <br>
               <h3>{{p.question}}</h3>
             </div>
             <div class="flip-card-back">
-              <br>
               <br>
               <p>{{p.answer}}</p>
               <br>
@@ -29,8 +29,8 @@
         </div>
       </div>
       <span>
-        <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button>
-        <button (click)="deletePrompt(p.id,i)">Delete Question</button>
+        <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">⭐</button>
+        <button (click)="deletePrompt(p.id,i)">🗑️</button>
         <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
       </span>
     </div>

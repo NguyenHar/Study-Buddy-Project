@@ -1,9 +1,9 @@
 <div *ngIf="checkLoginStatus()">
     <h2>Select a login</h2>
-    <div *ngFor="let u of users; index as i">
+    <div class="radio-toolbar" *ngFor="let u of users; index as i">
         <input type="radio" id="users_{{u.name}}" [value]="u" name="users" [(ngModel)]="selectedUser">
         <label for="users_{{u.name}}">{{u.name}}
-        </label><span> --- Delete User: </span> <button (click)="deleteUser(u.id, i)">X</button>
+        </label> <button (click)="deleteUser(u.id, i)">🗑️</button>
     </div>
     <br>
     <button (click)="logIn()">Submit</button>
