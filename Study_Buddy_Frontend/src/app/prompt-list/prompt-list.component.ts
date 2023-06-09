@@ -46,17 +46,6 @@ export class PromptListComponent implements OnInit{
   this.display=true;
   }
 
-  // Not used?
-  showAnswer(index:number){
-   for(let i=0;i<this.promptList.length;i++){
-    if(i==index){
-      this.promptList[i].show=true;
-    }
-    else{
-      this.promptList[i].show=false;
-    }
-   }
-  }
 
   // Adding prompt by id to list of favorites
   addFavorite(promptId:number) : void {

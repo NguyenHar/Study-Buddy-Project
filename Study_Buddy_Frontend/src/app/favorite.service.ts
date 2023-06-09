@@ -15,7 +15,6 @@ export class FavoriteService {
     return this.http.get<Favorites[]>(this.url);
   }
 
-  // Not used, maybe remove
   // Delete from favorites based on favorite primary key
   deleteFavorites(id:number):Observable<any>{
     return this.http.delete<any>(this.url+"/"+id);
@@ -31,8 +30,7 @@ export class FavoriteService {
   return this.http.post<any>(this.url,newFavorites);
   }
 
-  // Not used, maybe remove
-  // Return favorite object by favorite's primary key
+  // Return favorite object based on favorite's primary key
   getFavoritesById(id:number):Observable<Favorites>{
   return this.http.get<Favorites>(this.url+"/"+id);
   }
