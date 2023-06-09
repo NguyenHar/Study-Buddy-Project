@@ -89,6 +89,10 @@ namespace Study_Buddy_Backend.Controllers
           {
               return Problem("Entity set 'StudyBuddyContext.Users'  is null.");
           }
+            if ( user.Name == null)
+            {
+            return Problem("Object is not an invalid value!");
+            }
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
