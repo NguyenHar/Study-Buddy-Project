@@ -62,7 +62,9 @@ export class PromptListComponent implements OnInit{
   addFavorite(promptId:number) : void {
     let fav : Favorites = { id:0, userId:this.userApi.currentUser.id, promptId:promptId, prompt:null,user:null };
     this.favoriteApi.addFavorites(fav).subscribe(
-      () => {}
+      (result:Favorites) => {
+        this.userFavorites.push(result.promptId);
+      }
     );
   }
 
