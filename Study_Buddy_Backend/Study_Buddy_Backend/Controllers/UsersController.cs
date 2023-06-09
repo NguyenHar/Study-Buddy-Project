@@ -108,6 +108,8 @@ namespace Study_Buddy_Backend.Controllers
             {
                 return NotFound();
             }
+            List<Favorited>matching = _context.Favoriteds.Where(u => u.UserId == id).ToList();
+            _context.Favoriteds.RemoveRange(matching);
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();

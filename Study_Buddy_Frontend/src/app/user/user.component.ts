@@ -30,6 +30,14 @@ export class UserComponent {
     );
   }
 
+  deleteUser(id:number, index:number) : void {
+    this.userService.deleteUser(id).subscribe(
+      () => {
+        this.users.splice(index, 1);
+      }
+    );
+  }
+
   // selectUser() : void {
   //   this.userService.currentUser = this.selectedUser;
   //   this.userService.isLoggedIn = true;

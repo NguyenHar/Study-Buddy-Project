@@ -1,14 +1,16 @@
 <div *ngIf="checkLoginStatus()">
     <h2>Select a login</h2>
-    <div *ngFor="let u of users">
+    <div *ngFor="let u of users; index as i">
         <input type="radio" id="users_{{u.name}}" [value]="u" name="users" [(ngModel)]="selectedUser">
         <label for="users_{{u.name}}">{{u.name}}
-        </label>
+        </label><span> --- Delete User: </span> <button (click)="deleteUser(u.id, i)">X</button>
     </div>
+    <br>
     <button (click)="logIn()">Submit</button>
-    
-    <p>Add new person</p>
-    <p>Name: <input type="text" name="name" [(ngModel)]="newUser.name"/></p>
+    <br>
+    <h3>Add new person</h3>
+    <!-- <p>Name: </p> -->
+    <input type="text" name="name" [(ngModel)]="newUser.name"/>
     <button (click)="addUser()">Add user</button>
 </div>
 

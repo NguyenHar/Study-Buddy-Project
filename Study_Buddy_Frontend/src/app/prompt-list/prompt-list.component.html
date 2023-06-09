@@ -10,6 +10,7 @@
 <p *ngIf="p.show">Answer:{{p.answer}}</p> -->
 
   <div class="center">
+    <div class="cards">
       <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -21,14 +22,20 @@
               <br>
               <br>
               <p>{{p.answer}}</p>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button><br/>
+              <button (click)="deletePrompt(p.id,i)">Delete Question</button><br/>
+              <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
             </div>
           </div>
         </div>
-        <p>{{p.id}}</p>
-      <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button><br/>
-      <button (click)="deletePrompt(p.id,i)">Delete Question</button><br/>
-      <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
-  </div>
+      </div>
+      <p>{{p.id}}</p>
+    </div>
 </div>
 <br>
 
