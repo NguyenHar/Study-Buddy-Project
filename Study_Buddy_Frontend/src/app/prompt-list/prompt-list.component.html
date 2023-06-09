@@ -27,13 +27,15 @@
               <br>
               <br>
               <br>
-              <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button><br/>
-              <button (click)="deletePrompt(p.id,i)">Delete Question</button><br/>
-              <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
             </div>
           </div>
         </div>
       </div>
+      <span>
+        <button (click)="addFavorite(p.id)" *ngIf="!checkFavorite(p.id)">Add to favorite</button>
+        <button (click)="deletePrompt(p.id,i)">Delete Question</button>
+        <app-edit-prompt [editPrompt]="p" (changed)="updatePrompt($event,i)"></app-edit-prompt>
+      </span>
     </div>
 </div>
 <br>
