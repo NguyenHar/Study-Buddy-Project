@@ -55,7 +55,7 @@ namespace Study_Buddy_Backend.Controllers
         }
 
         [HttpGet("user/{userId}")]
-        // Check if a prompt is already favorited for the person
+        // Return the list of prompt id's that is favorited by the person
         public async Task<ActionResult<IEnumerable<int>>> GetUserFavorites(int userId)
         {
             if (_context.Prompts == null)
@@ -169,6 +169,7 @@ namespace Study_Buddy_Backend.Controllers
 
             return NoContent();
         }
+        // Check if a prompt is already favorited for the person
         private bool FavoritedExists(int id)
         {
             return (_context.Favoriteds?.Any(e => e.Id == id)).GetValueOrDefault();
